@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+
+<script>
+
+	//task
+		//create a new promise getColddrinks which comes after husband get butter
+	const preMovie=async()=>{
+	const promiseWifeBringTicket=new Promise((resolve,reject)=>{
+	 	setTimeout(() => 
+	 		resolve('ticket')
+	 	, 2000)
+	 })
+	 const getPopcorn= new Promise((resolve,reject)=>resolve('popcorn'));
+
+	 const getButter=new Promise((resolve,reject)=>resolve('butter'))
+	 const getColdDrink= new Promise((resolve,reject)=>resolve('colddrink'))
+
+		let ticket= await promiseWifeBringTicket;
+		console.log('wife:I have the tickets');
+	 	console.log('husband:we should go in');
+	 	console.log('wife:i am hungry');
+
+		let Popcorn =await getPopcorn ;
+		console.log(`husband:i got some ${Popcorn}`)
+		console.log('husband:we should go in');
+		console.log('wife:i need butter  on my popcorn')
+
+
+		let butter= await getButter;
+		console.log(`i got some ${butter} on popcorn`)
+
+		let coldDrink=await getColdDrink;
+		console.log(`i got some ${coldDrink} with popcorn`);
+	 	return ticket
+		
+
+	}
+
+preMovie().then((m)=>
+console.log(`person3:shows ${m}`)
+)
+</script>
+</html>

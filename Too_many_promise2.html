@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+
+<script>
+
+
+		function updateUsertime(){
+			return new Promise((resolve,reject)=>{
+				setTimeout(()=>{
+					resolve(new Date())
+			},1000)
+			})
+		}
+
+		function createPost(post){
+			return new Promise((resolve,reject)=>{
+				const newpost={content:post,timestamp:new Date()}
+				resolve(newpost);
+			})
+		}
+
+		function deletePost(posts){
+			return new Promise((resolve,reject)=>{
+				
+					let deletedPost=posts.pop();
+				
+					resolve({deletepost:deletedPost,remainingPosts:posts});
+			})
+		}
+
+async function postOperation(){
+
+try{
+
+	
+		const userPost=await createPost("this is post1");
+		const userTime=await updateUsertime()
+
+		console.log([userPost]);
+		console.log(userTime);
+
+		const postAndUpdateUserTime={posts:[userPost],updateUsertime}
+
+		const { deletepost, remainingPosts } =await deletePost(postAndUpdateUserTime.posts);
+		// Log the deleted post
+    	console.log("Deleted Post:", deletepost);
+
+    	// Log the remaining posts
+    	console.log("Remaining Posts:", remainingPosts);
+}
+catch(error){
+	console.log(error);
+}}
+postOperation()
+.then((m)=>console.log(m))
+</script>
+</html>
